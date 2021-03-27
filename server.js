@@ -8,11 +8,11 @@ require('./hbs/helpers');
 
 const port = process.env.PORT || 3000;
 
-
 // Express HBS Engine
 hbs.registerPartials(__dirname + '/views/partials')
 app.set('view engine', 'hbs');
 
+const { products } = require('./db/db');
 
 app.get('/', (req, res) => {
 
@@ -29,6 +29,10 @@ app.get('/about', (req, res) => {
         year: new Date().getFullYear()
     });
 
+})
+
+app.get('/database', (req, res) => {
+    res.send(products)
 })
 
 app.listen(port, () => {
