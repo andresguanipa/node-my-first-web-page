@@ -47,3 +47,11 @@ footer {
 body {
     overflow: hidden;
 }
+
+.form {
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-top: 5%;
+    padding: 2%;
+    border: 1px solid #353A3F;
+}

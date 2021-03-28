@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
         name: 'andres gUANIpa',
         year: new Date().getFullYear()
     });
-
 })
 
 app.get('/about', (req, res) => {
@@ -33,6 +32,12 @@ app.get('/about', (req, res) => {
 
 app.get('/database', (req, res) => {
     res.send(products)
+})
+
+app.get('/contactanos', (req, res) => {
+
+    res.render('contactanos');
+
 })
 
 app.listen(port, () => {
