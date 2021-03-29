@@ -25,8 +25,8 @@ const oEmail = new email({
     "port": 465,
     "secure": true,
     "auth": {
-        "user": "andreseguanipa1@gmail.com",
-        "pass": "ijvaaqjwnajaxsbb",
+        "user": "myspacevag1@gmail.com",
+        "pass": "qltuaabucmzguwcj",
     }
 
 });
@@ -62,8 +62,8 @@ app.get('/contactanos', (req, res) => {
 app.post('/contactanos', (req, res, next) => {
 
     let email = {
-        from: "andreseguanipa1@gmail.com",
-        to: "andreseguanipa1@gmail.com",
+        from: "myspacevag1@gmail.com",
+        to: "myspacevag1@gmail.com",
         subject: "Nuevo mensaje",
         html: `
             <div>
