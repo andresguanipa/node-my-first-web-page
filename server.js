@@ -1,3 +1,4 @@
+require('./config');
 const express = require('express')
 const app = express()
 
@@ -5,8 +6,6 @@ app.use(express.static(__dirname + '/public'));
 
 const hbs = require('hbs');
 require('./hbs/helpers');
-
-const port = process.env.PORT || 3000;
 
 // Express HBS Engine
 hbs.registerPartials(__dirname + '/views/partials')
@@ -59,11 +58,11 @@ app.get('/contactanos', (req, res) => {
 
 })
 
-app.post('/contactanos', (req, res, next) => {
+app.post('/contactanos', (req, res) => {
 
     let email = {
         from: "myspacevag1@gmail.com",
-        to: "myspacevag1@gmail.com",
+        to: req.body.email,
         subject: "Nuevo mensaje",
         html: `
             <div>
@@ -80,6 +79,6 @@ app.post('/contactanos', (req, res, next) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`Escuchando peticiones en el puerto ${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`Escuchando peticiones en el puerto ${process.env.PORT}`)
 })

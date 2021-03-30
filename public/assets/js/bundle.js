@@ -1,7 +1,18 @@
 (function() {
     function r(e, n, t) {
-        function o(i, f) { if (!n[i]) { if (!e[i]) { var c = "function" == typeof require && require; if (!f && c) return c(i, !0); if (u) return u(i, !0); var a = new Error("Cannot find module '" + i + "'"); throw a.code = "MODULE_NOT_FOUND", a } var p = n[i] = { exports: {} };
-                e[i][0].call(p.exports, function(r) { var n = e[i][1][r]; return o(n || r) }, p, p.exports, r, e, n, t) } return n[i].exports } for (var u = "function" == typeof require && require, i = 0; i < t.length; i++) o(t[i]); return o } return r })()({
+        function o(i, f) {
+            if (!n[i]) {
+                if (!e[i]) { var c = "function" == typeof require && require; if (!f && c) return c(i, !0); if (u) return u(i, !0); var a = new Error("Cannot find module '" + i + "'"); throw a.code = "MODULE_NOT_FOUND", a }
+                var p = n[i] = { exports: {} };
+                e[i][0].call(p.exports, function(r) { var n = e[i][1][r]; return o(n || r) }, p, p.exports, r, e, n, t)
+            }
+            return n[i].exports
+        }
+        for (var u = "function" == typeof require && require, i = 0; i < t.length; i++) o(t[i]);
+        return o
+    }
+    return r
+})()({
     1: [function(require, module, exports) {
         // shim for using process in browser
         var process = module.exports = {};
@@ -1816,6 +1827,10 @@
     29: [function(require, module, exports) {
         const axios = require('axios');
 
+        function aosAnimations() {
+            AOS.init();
+        }
+
         function displayProducts(productos) {
 
             let productsHTML = '';
@@ -1835,49 +1850,64 @@
             document.getElementById('page-content').innerHTML = productsHTML;
         }
 
-        function aosAnimations() {
-            AOS.init();
+        if (window.location.pathname == '/') {
+
+            window.onload = async() => {
+                aosAnimations();
+            }
         }
 
-        window.onload = async() => {
-            const productList = await (await fetch("/database")).json();
-            aosAnimations();
-            console.log(productList);
-            displayProducts(productList);
+        if (window.location.pathname == '/about') {
+            window.onload = async() => {
+                const productList = await (await fetch("/database")).json();
+                aosAnimations();
+                displayProducts(productList);
+            }
         }
 
-        const buttonSend = document.getElementById("IdBtnSend");
 
-        buttonSend.addEventListener("click", () => {
-            let sendName = document.getElementById("IdCE").value;
-            let sendEmail = document.getElementById("IdEM").value;
-            let sendText = document.getElementById("IdTxt").value;
+        if (window.location.pathname == '/contactanos') {
 
-            if (sendEmail != '' && sendName != '' && sendText != '') {
-
-                const datos = {
-                    email: sendEmail,
-                    name: sendName,
-                    text: sendText
-                }
-
-                axios.post('/contactanos', datos)
-                    .then((res) => {
-
-                        document.getElementById("IdCE").value = "";
-                        document.getElementById("IdEM").value = "";
-                        document.getElementById("IdTxt").value = "";
-                        alert("Gracias por escribirnos");
-
-                    }).catch((err) => {
-
-                        console.log(err);
-                    })
-
-            } else {
-                alert('Verifica bien los campos');
+            window.onload = async() => {
+                aosAnimations();
             }
 
-        });
+            const buttonSend = document.getElementById("IdBtnSend");
+
+            buttonSend.addEventListener("click", () => {
+                let sendName = document.getElementById("IdCE").value;
+                let sendEmail = document.getElementById("IdEM").value;
+                let sendText = document.getElementById("IdTxt").value;
+
+                if (sendEmail != '' && sendName != '' && sendText != '') {
+
+                    const datos = {
+                        email: sendEmail,
+                        name: sendName,
+                        text: sendText
+                    }
+
+                    axios.post('/contactanos', datos)
+                        .then((res) => {
+
+                            document.getElementById("IdCE").value = "";
+                            document.getElementById("IdEM").value = "";
+                            document.getElementById("IdTxt").value = "";
+                            alert("Gracias por escribirnos");
+
+                        }).catch((err) => {
+
+                            console.log(err);
+                        })
+
+                } else {
+                    alert('Verifica bien los campos');
+                }
+
+            });
+
+        }
+
+
     }, { "axios": 2 }]
 }, {}, [29]);

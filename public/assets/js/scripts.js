@@ -30,6 +30,8 @@ window.onload = async() => {
     displayProducts(productList);
 }
 
+
+
 const buttonSend = document.getElementById("IdBtnSend");
 
 buttonSend.addEventListener("click", () => {
