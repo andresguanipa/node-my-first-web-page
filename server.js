@@ -61,7 +61,7 @@ app.get('/contactanos', (req, res) => {
 app.post('/contactanos', (req, res) => {
 
     let email = {
-        from: "myspacevag1@gmail.com",
+        from: req.body.email,
         to: req.body.email,
         subject: "Nuevo mensaje",
         html: `

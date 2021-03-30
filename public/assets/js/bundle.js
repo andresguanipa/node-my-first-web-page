@@ -1825,7 +1825,17 @@
 
     }, { "./helpers/bind": 18 }],
     29: [function(require, module, exports) {
+
         const axios = require('axios');
+
+        function validarEmail(valor) {
+            const text = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!text.test(valor)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
 
         function aosAnimations() {
             AOS.init();
@@ -1879,7 +1889,7 @@
                 let sendEmail = document.getElementById("IdEM").value;
                 let sendText = document.getElementById("IdTxt").value;
 
-                if (sendEmail != '' && sendName != '' && sendText != '') {
+                if (sendEmail != '' && sendName != '' && sendText != '' && validarEmail(sendEmail) == true) {
 
                     const datos = {
                         email: sendEmail,
