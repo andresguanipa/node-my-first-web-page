@@ -41,8 +41,6 @@ buttonSend.addEventListener("click", () => {
 
     if (sendEmail != '' && sendName != '' && sendText != '') {
 
-
-
         const datos = {
             email: sendEmail,
             name: sendName,

@@ -35,7 +35,7 @@ const oEmail = new email({
     "secure": true,
     "auth": {
         "user": "myspacevag1@gmail.com",
-        "pass": "qltuaabucmzguwcj",
+        "pass": process.env.pass,
     }
 
 });
@@ -43,9 +43,9 @@ const oEmail = new email({
 app.post('/contactanos', (req, res) => {
 
     let email = {
-        from: req.body.email,
-        to: req.body.email,
-        subject: "Nuevo mensaje",
+        from: "myspacevag1@gmail.com",
+        to: "myspacevag1@gmail.com",
+        subject: "Nuevo mensaje desde AV Shop",
         html: `
             <div>
                 <p>Correo: ${req.body.email}</p>

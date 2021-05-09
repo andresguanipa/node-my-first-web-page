@@ -34,6 +34,8 @@ footer {
 
 .price {
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 3%;
 }
 
 .name {
@@ -45,7 +47,13 @@ footer {
 }
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 10%;
+}
+
+.text-form, a, footer, .name{
+    font-family: 'Montserrat', sans-serif;
 }
 
 .form {
@@ -55,3 +63,26 @@ body {
     padding: 2%;
     border: 1px solid #353A3F;
 }
+
+@media only screen and (max-width:1000px) {
+
+    body{
+        overflow-y: auto;
+        padding-bottom: 15%;
+
+    }
+
+    .jumbotron{
+        padding: 5%;
+    }
+
+    .form {
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-top: 5%;
+        padding: 2%;
+        border: 1px solid #353A3F;
+    }
+
+
+} 
